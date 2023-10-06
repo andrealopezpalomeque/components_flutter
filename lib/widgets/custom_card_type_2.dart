@@ -2,7 +2,12 @@ import 'package:components_flutter/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardType2 extends StatelessWidget {
-  const CustomCardType2({super.key});
+//propiedades
+  final String imageUrl;
+  final String? name;
+
+  const CustomCardType2({Key? key, required this.imageUrl, this.name})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +18,20 @@ class CustomCardType2 extends StatelessWidget {
         elevation: 10,
         child: Column(
           children: [
-            const FadeInImage(
-              placeholder: AssetImage('assets/jar-loading.gif'),
-              image: NetworkImage(
-                  'https://www.muycomputer.com/wp-content/uploads/2021/06/BigSur.jpg'),
+            FadeInImage(
+              placeholder: const AssetImage('assets/jar-loading.gif'),
+              image: NetworkImage(imageUrl),
               width: double.infinity,
               height: 230,
               fit: BoxFit.cover,
-              fadeInDuration: Duration(milliseconds: 300),
+              fadeInDuration: const Duration(milliseconds: 300),
             ),
-            Container(
-              alignment: AlignmentDirectional.centerEnd,
-              padding: const EdgeInsets.all(10),
-              child: const Text('No tengo idea de que poner'),
-            )
+            if (name != null)
+              Container(
+                alignment: AlignmentDirectional.centerEnd,
+                padding: const EdgeInsets.all(10),
+                child: Text(name!),
+              )
           ],
         ));
   }
