@@ -35,7 +35,9 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
     return Scaffold(
         appBar: AppBar(title: const Text('Animated Screen')),
         body: Center(
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 400),
+            curve: Curves.easeOutCubic,
             width: _width,
             height: _height,
             decoration: BoxDecoration(
@@ -45,8 +47,11 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.play_circle_outline),
-          onPressed: () => changeShape(),
+          onPressed: changeShape,
+          child: const Icon(
+            Icons.play_circle_outline,
+            size: 35,
+          ),
         ));
   }
 }
