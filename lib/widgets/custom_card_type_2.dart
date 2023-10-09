@@ -12,7 +12,7 @@ class CustomCardType2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.antiAlias, // para que no se salga la imagen
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
         shadowColor: AppTheme.primary.withOpacity(0.5),
         elevation: 10,
