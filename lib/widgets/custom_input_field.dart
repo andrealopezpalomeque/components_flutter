@@ -6,6 +6,11 @@ class CustomInputField extends StatelessWidget {
   final String? helperText;
   final IconData? icon;
   final IconData? suffixIcon;
+  final TextInputType? keyboardType;
+  final bool obscureText;
+
+  final String formProperty;
+  final Map<String, String> formValues;
 
   const CustomInputField({
     Key? key,
@@ -14,6 +19,10 @@ class CustomInputField extends StatelessWidget {
     this.helperText,
     this.icon,
     this.suffixIcon,
+    this.keyboardType,
+    this.obscureText = false,
+    required this.formProperty, // 'first_name'
+    required this.formValues, // {'first_name': 'Andrea'}
   }) : super(key: key);
 
   @override
@@ -22,7 +31,9 @@ class CustomInputField extends StatelessWidget {
       autofocus: true,
       initialValue: '',
       textCapitalization: TextCapitalization.words,
-      onChanged: (value) => print('value $value'),
+      keyboardType: keyboardType,
+      obscureText: obscureText,
+      onChanged: (value) => formValues[formProperty] = value,
       validator: (value) {
         if (value == null) return 'Ingrese un valor';
         return value.length < 3 ? 'Ingrese al menos 3 caracteres' : null;
