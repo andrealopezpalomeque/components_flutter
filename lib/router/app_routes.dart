@@ -46,6 +46,16 @@ class AppRoutes {
         icon: Icons.input_rounded,
         name: 'Text Inputs',
         screen: const InputsScreen()),
+    MenuOption(
+        route: 'slider',
+        icon: Icons.tune_rounded,
+        name: 'Sliders and Checks',
+        screen: const SliderScreen()),
+    MenuOption(
+        route: 'listviewbuilder',
+        icon: Icons.list_alt_rounded,
+        name: 'InfiniteScroll and Pull to refresh',
+        screen: const ListViewBuilderScreen()),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
@@ -70,5 +80,7 @@ class AppRoutes {
   // };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) =>
-      MaterialPageRoute(builder: (context) => const AlertScreen());
+      MaterialPageRoute(
+          builder: (context) =>
+              const AlertScreen()); //! si no encuentra la ruta, va a la alerta
 }

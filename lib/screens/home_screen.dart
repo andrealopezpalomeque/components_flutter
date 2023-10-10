@@ -15,21 +15,24 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('HomeScreen'),
         ),
-        body: ListView.separated(
-            itemBuilder: (context, index) => ListTile(
-                  title: Text(menuOptions[index].name),
-                  leading:
-                      Icon(menuOptions[index].icon, color: AppTheme.primary),
-                  trailing: const Icon(Icons.arrow_forward_ios,
-                      color: AppTheme.primary),
-                  onTap: () {
-                    // final route = MaterialPageRoute(
-                    //     builder: (context) => const ListView1Screen());
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: ListView.separated(
+              itemBuilder: (context, index) => ListTile(
+                    title: Text(menuOptions[index].name),
+                    leading:
+                        Icon(menuOptions[index].icon, color: AppTheme.primary),
+                    trailing: const Icon(Icons.arrow_forward_ios,
+                        color: AppTheme.primary),
+                    onTap: () {
+                      // final route = MaterialPageRoute(
+                      //     builder: (context) => const ListView1Screen());
 
-                    Navigator.pushNamed(context, menuOptions[index].route);
-                  },
-                ),
-            separatorBuilder: (_, __) => const Divider(),
-            itemCount: menuOptions.length));
+                      Navigator.pushNamed(context, menuOptions[index].route);
+                    },
+                  ),
+              separatorBuilder: (_, __) => const Divider(),
+              itemCount: menuOptions.length),
+        ));
   }
 }
